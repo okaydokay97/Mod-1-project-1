@@ -49,6 +49,7 @@ Users
 ---------
 -id: int
 -username: string
+-age: int
 
 Reviews
 ------------
