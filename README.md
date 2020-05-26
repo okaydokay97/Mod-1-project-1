@@ -44,19 +44,47 @@ Your **first goal** should be to decide on your models and determine the relatio
 Whiteboard out your ideas and think about what columns you'll want in the corresponding tables, including foreign keys.
 
 * What does your schema look like?
+
+Users
+---------
+-id: int
+-username: string
+-age: int
+
+Reviews
+------------
+-id: int
+-user_review: string
+-user_rating: int
+-user_id: int
+-video_game_id: int
+
+VideoGames
+-------------
+-id: int
+-genre: string
+-title: string
+-console: string
+
+
 * What do your relationships look like?
+Users >--- Reviews ---< VideoGames
+
 * Where are foreign keys stored in a many-to-many relationship?
+Reviews
+
 * etc.
 
 Your **second goal** should be to decide on your [user stories](https://en.wikipedia.org/wiki/User_story). You **must have a minimum of four user stories corresponding to the four CRUD actions** to help explain how a user will interact with your app. A user story should follow the general structure of `"As a <role>, I want <goal/desire> so that <benefit>."`.
 
 For example, if we were creating an app to review restaurants on Yelp, we might write:
 
-* As a user, I want to enter a location and be given a random nearby restaurant suggestion. (**Read**)
-* As a user, I want to be able to write a review for a restaurant. (**Create**)
-* As a user, I want to enter a restaurant and be given user reviews of that restaurant. (**Read**)
-* As a user, I should be able to edit my restaurant review. (**Update**)
-* As a user, I want to be able to delete one of my restaurant reviews. (**Delete**)
+MODEL
+---------
+As a user, I want to be able to write a review (CREATE)
+As a user, I want to be able to see a games reviews (READ)
+As a user, I want to be able to change my review (UPDATE)
+As a user, I want to be able to remove my review (DELETE)
 
 
 #### The Pitch
