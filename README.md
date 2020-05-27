@@ -81,10 +81,10 @@ For example, if we were creating an app to review restaurants on Yelp, we might 
 
 MODEL
 ---------
-As a user, I want to be able to write a review (CREATE)
-As a user, I want to be able to see a games reviews (READ)
-As a user, I want to be able to change my review (UPDATE)
-As a user, I want to be able to remove my review (DELETE)
+* As a user, I want to be able to write a review (CREATE)
+* As a user, I want to be able to see a games reviews (READ)
+* As a user, I want to be able to change my review (UPDATE)
+* As a user, I want to be able to remove my review (DELETE)
 
 
 #### The Pitch
