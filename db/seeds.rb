@@ -1,3 +1,8 @@
+User.destroy_all
+Review.destroy_all
+VideoGame.destroy_all
+
+
 ###  USER INFO ###
 dan = User.create(username: 'Dan', age: 35)
 rubens = User.create(username: 'Rubens', age: 22)
