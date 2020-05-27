@@ -1,5 +1,7 @@
 require_relative '../config/environment'
 
+ActiveRecord::Base.logger.level = 1 # or Logger::INFO
+
 puts `clear`
 puts
 puts "*" * 20
@@ -9,8 +11,9 @@ puts
 cli = CommandLineInterface.new
 game = cli.select_game
 if game
+  puts `clear`
   puts "*" * 20
-  puts game.reviews
+  puts "You have selected #{game.title}."
   puts "*" * 20
 else
   puts "*" * 20
