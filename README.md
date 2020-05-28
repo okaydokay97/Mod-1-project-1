@@ -68,7 +68,7 @@ VideoGames
 
 
 * What do your relationships look like?
-Users >--- Reviews ---< VideoGames
+Users ---< Reviews >--- VideoGames
 
 * Where are foreign keys stored in a many-to-many relationship?
 Reviews
