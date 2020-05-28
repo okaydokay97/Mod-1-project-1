@@ -4,7 +4,7 @@ ActiveRecord::Base.logger.level = 1 # or Logger::INFO
 
 puts `clear`
 puts
-puts "*" * 20
+puts "*" * 23
 puts
 
 
