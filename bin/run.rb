@@ -23,5 +23,3 @@ else
   puts "*" * 20
 end
 action = cli.choose_action
-binding.pry
-0
