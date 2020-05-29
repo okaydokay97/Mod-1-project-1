@@ -130,12 +130,12 @@ class CommandLineInterface
       puts
       new_review = gets.chomp
       puts
-      puts "Please Enter A Rating From One To Five"
+      puts "Please Enter A Rating From '1' To '5'"
       puts
       new_rating = gets.chomp.to_i
       while [1, 2, 3, 4, 5].include?(new_rating) == false
         puts `clear`
-        puts "Please Enter A Valid Rating From One To Five\n\n"
+        puts "Please Enter A Valid Rating From '1' To '5'\n\n"
         new_rating = gets.chomp.to_i
         [1, 2, 3, 4, 5].include?(new_rating)
       end
@@ -183,13 +183,13 @@ class CommandLineInterface
         puts "Updated Your Review To '#{new_review}'!"
         puts
         puts "*************************************************"
-        puts "Please Enter Your Updated Rating From One To Five"
+        puts "Please Enter Your Updated Rating From '1' To '5'"
         puts "*************************************************"
         puts
         new_rating = gets.chomp
         while [1, 2, 3, 4, 5].include?(new_rating) == false
           puts `clear`
-          puts "Please Enter A Valid Rating From One To Five\n\n"
+          puts "Please Enter A Valid Rating From '1' To '5'\n\n"
           new_rating = gets.chomp.to_i
           [1, 2, 3, 4, 5].include?(new_rating)
         end
@@ -226,7 +226,11 @@ class CommandLineInterface
        puts "#{get_review.user_review} \n Rating: #{get_review.user_rating}/5\n\n\n"
        user_input = gets.chomp.downcase
        if user_input == "n"
-         return_to_main_menu
+        puts "/nReview Not Deleted!"
+        puts
+        puts "-----------------------"
+        puts
+        return_to_main_menu
        else
         puts
         puts "Are You Sure? 'Y/N'\n\n\n"
