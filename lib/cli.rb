@@ -80,7 +80,8 @@ class CommandLineInterface
     user_name = gets.chomp
     while user_name == "" || user_name.include?(" ")
       puts `clear`
-      puts "Your Username Can Not Be Empty Or Contain Spaces\n\n"
+      puts "Your Username Can Not Be Empty Or Contain Spaces..."
+      puts "Please Enter A Username:\n\n"
       user_name = gets.chomp
     end
     puts "\nPlease Enter Your Age:\n\n"
@@ -137,16 +138,28 @@ class CommandLineInterface
   end
 
   def read_review
-    puts "Here Are The Reviews!"
-    puts "---------------------"
-    puts
+    prompt = TTY::Prompt.new
     review_instances_arr = Review.where(video_game: @@game_id)
-    review_instances_arr.map do |game|
-      puts "#{game.user.username} says: '#{game.user_review}'. \nRating: #{game.user_rating}/5\n\n"
+    if review_instances_arr == []
+      puts "There Are No Reviews For This Game Yet!"
+      response = prompt.yes?("Would you like to leave a review?")
+      if response
+        write_review
+      else
+        return_to_main_menu
+      end
+    else
+      puts "Here Are The Reviews!"
+      puts "---------------------"
+      puts
+
+      review_instances_arr.map do |game|
+        puts "#{game.user.username} says: '#{game.user_review}'. \nRating: #{game.user_rating}/5\n\n"
+      end
+      puts "---------------------"
+      puts
+      return_to_main_menu
     end
-    puts "---------------------"
-    puts
-    return_to_main_menu
   end
 
   def update_review
