@@ -161,7 +161,7 @@ class CommandLineInterface
     puts
     return_to_main_menu
   end
-
+ 
   def update_review
     if get_review
       puts `clear`
