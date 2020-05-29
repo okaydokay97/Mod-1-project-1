@@ -10,18 +10,7 @@ puts
 
 cli = CommandLineInterface.new
 cli.select_user
-game = cli.select_game
-if game
-  puts `clear`
-  puts "*" * 20
-  puts "You have selected #{game.title}."
-  puts "*" * 20
-  puts
-else
-  puts "*" * 20
-  puts "Game not found please try again"
-  puts "*" * 20
-end
-action = cli.choose_action
+cli.select_game
+cli.choose_action
 # binding.pry
 # 0
