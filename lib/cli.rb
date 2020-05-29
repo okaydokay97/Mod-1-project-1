@@ -148,7 +148,7 @@ class CommandLineInterface
       return_to_main_menu
     end
   end
-
+ 
   def read_review
     puts "Here Are The Reviews!"
     puts "---------------------"
