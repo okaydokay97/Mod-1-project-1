@@ -1,10 +1,8 @@
 class CommandLineInterface
   def display_games
-    puts "Here Is Our Selection Of Video Games:"
-    puts "1. Breath of the Wild \n2. Sonic '06"
-    puts
-    puts "Please Enter A Title:\n\n"
-    puts
+    prompt = TTY::Prompt.new
+    titles_arr = VideoGame.all.map {|game_instance| game_instance.title}
+    prompt.select("Please select a game:", titles_arr)
   end
 
   def display_selected_game
@@ -15,20 +13,9 @@ class CommandLineInterface
   end
 
   def select_game
-    display_games
-    game = gets.chomp
+    game = display_games
     @@game = VideoGame.find_by(title: game)
-    while !@@game
-      puts `clear`
-      puts "*" * 31
-      puts "Game not found please try again"
-      puts "*" * 31
-      puts
-      display_games
-      game = gets.chomp
-      @@game = VideoGame.find_by(title: game)
-    end
-    @@game_id = @@game.id 
+    @@game_id = @@game.id
     puts `clear`
     VideoGame.find_by(title: @@game)
     # user will select a game, using tty?
@@ -37,7 +24,7 @@ class CommandLineInterface
   def select_user
     puts `clear`
     puts "***************************"
-    puts 
+    puts
     puts "Please Enter Your Username."
     puts
     puts "***************************"
@@ -45,7 +32,7 @@ class CommandLineInterface
     name = gets.chomp
     if User.find_by(username: name)
       puts `clear`
-      puts "Hi #{name}, Welcome To OhYea, The Largest Online Video Game Store In Ohio."
+      puts "Hi #{name}, Welcome To OhYea, The Largest Online Video Game Review Site In Ohio."
       puts "-" * (67 + name.length)
       puts
       @@user = User.find_by(username: name)
@@ -94,7 +81,7 @@ class CommandLineInterface
     while user_name == "" || user_name.include?(" ")
       puts `clear`
       puts "Your Username Can Not Be Empty Or Contain Spaces\n\n"
-      user_name = gets.chomp 
+      user_name = gets.chomp
     end
     puts "\nPlease Enter Your Age:\n\n"
     user_age = gets.chomp
@@ -115,7 +102,7 @@ class CommandLineInterface
     if get_review
     puts `clear`
     puts "You've Already Written A Review For This Game! \n\nWould You Like To Update Your Existing Review? 'Y/N'\n\n"
-    puts 
+    puts
     user_input = gets.chomp.downcase
     puts
       if user_input == "y"
@@ -148,7 +135,7 @@ class CommandLineInterface
       return_to_main_menu
     end
   end
- 
+
   def read_review
     puts "Here Are The Reviews!"
     puts "---------------------"
@@ -161,7 +148,7 @@ class CommandLineInterface
     puts
     return_to_main_menu
   end
- 
+
   def update_review
     if get_review
       puts `clear`
@@ -186,7 +173,7 @@ class CommandLineInterface
         puts "Please Enter Your Updated Rating From '1' To '5'"
         puts "*************************************************"
         puts
-        new_rating = gets.chomp
+        new_rating = gets.chomp.to_i
         while [1, 2, 3, 4, 5].include?(new_rating) == false
           puts `clear`
           puts "Please Enter A Valid Rating From '1' To '5'\n\n"
